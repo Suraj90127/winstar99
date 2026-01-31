@@ -56,7 +56,7 @@ export default function Recharge() {
     formData.append("amount", amount);
     formData.append("type", type);
 
-    if (activeTab2 === "UPI-QR") {
+    if (activeTab === "UPI-QR") {
       if (bannergetData?.chennal?.status1 == 1) {
         dispatch(TrexoPayment({ amount, type })).then((res) => {
           setSuccessMessage(res.payload.message);
@@ -87,7 +87,7 @@ export default function Recharge() {
           }, 3000);
         });
       }
-    } else if (activeTab2 === "TY-QRpay" || activeTab2 === "Easy-QRpay") {
+    } else if (activeTab === "UPI-QRpay" || activeTab === "Wake UP-APP") {
       if (bannergetData?.chennal?.status2 == 1) {
         dispatch(zilpayRecharge({ amount, type })).then((res) => {
           setSuccessMessage(res.payload.message);
@@ -104,22 +104,6 @@ export default function Recharge() {
           }, 3000);
         });
       } else {
-        dispatch(TrexoPayment({ amount, type })).then((res) => {
-          setSuccessMessage(res.payload.message);
-          if (res.payload.status) {
-            setAlertsuccess(true);
-            // console.log("data",res.payload.data)
-            window.location.href = res.payload.data.payment_url;
-          } else {
-            setAlerts(true);
-          }
-          setTimeout(() => {
-            setSuccessMessage("");
-          }, 3000);
-        });
-      }
-    } else if (activeTab2 === "7Day-UPI" || activeTab2 === "51-APPpay") {
-      if (bannergetData?.chennal?.status3 == 1) {
         dispatch(zilpayRecharge({ amount, type })).then((res) => {
           setSuccessMessage(res.payload.message);
           if (res.payload.status) {
@@ -134,14 +118,29 @@ export default function Recharge() {
             setSuccessMessage("");
           }, 3000);
         });
-      } else {
-        dispatch(zilpayRecharge({ amount, type })).then((res) => {
+      }
+    } else if (activeTab === "UPI-PayTM") {
+      if (bannergetData?.chennal?.status3 == 1) {
+        dispatch(TrexoPayment({ amount, type })).then((res) => {
           setSuccessMessage(res.payload.message);
           if (res.payload.status) {
             setAlertsuccess(true);
-            // const urls=res.payload.data.url
-            window.location.href = res.payload.data.url;
-            //  window.open(urls, "_blank");
+            // console.log("data",res.payload.data)
+            window.location.href = res.payload.data.payment_url;
+          } else {
+            setAlerts(true);
+          }
+          setTimeout(() => {
+            setSuccessMessage("");
+          }, 3000);
+        });
+      } else {
+        dispatch(TrexoPayment({ amount, type })).then((res) => {
+          setSuccessMessage(res.payload.message);
+          if (res.payload.status) {
+            setAlertsuccess(true);
+            // console.log("data",res.payload.data)
+            window.location.href = res.payload.data.payment_url;
           } else {
             setAlerts(true);
           }
