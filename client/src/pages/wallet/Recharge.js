@@ -90,12 +90,13 @@ export default function Recharge() {
       }
     } else if (activeTab2 === "UPI-PayTM" || activeTab2 === "Easy-QRpay") {
       if (bannergetData?.chennal?.status2 == 1) {
-        dispatch(TrexoPayment({ amount, type })).then((res) => {
+        dispatch(zilpayRecharge({ amount, type })).then((res) => {
           setSuccessMessage(res.payload.message);
           if (res.payload.status) {
             setAlertsuccess(true);
-            // console.log("data",res.payload.data)
-            window.location.href = res.payload.data.payment_url;
+            //  window.open(urls, "_blank");
+
+            window.location.href = res.payload.data.url;
           } else {
             setAlerts(true);
           }
@@ -104,12 +105,13 @@ export default function Recharge() {
           }, 3000);
         });
       } else {
-        dispatch(TrexoPayment({ amount, type })).then((res) => {
+        dispatch(zilpayRecharge({ amount, type })).then((res) => {
           setSuccessMessage(res.payload.message);
           if (res.payload.status) {
             setAlertsuccess(true);
-            // console.log("data",res.payload.data)
-            window.location.href = res.payload.data.payment_url;
+            //  window.open(urls, "_blank");
+
+            window.location.href = res.payload.data.url;
           } else {
             setAlerts(true);
           }
@@ -118,7 +120,7 @@ export default function Recharge() {
           }, 3000);
         });
       }
-    } else if (activeTab2 === "7Day-UPI" || activeTab2 === "51-APPpay") {
+    } else if (activeTab === "UPI-PayTM") {
       if (bannergetData?.chennal?.status3 == 1) {
         dispatch(TrexoPayment({ amount, type })).then((res) => {
           setSuccessMessage(res.payload.message);
@@ -134,13 +136,12 @@ export default function Recharge() {
           }, 3000);
         });
       } else {
-        dispatch(zilpayRecharge({ amount, type })).then((res) => {
+        dispatch(TrexoPayment({ amount, type })).then((res) => {
           setSuccessMessage(res.payload.message);
           if (res.payload.status) {
             setAlertsuccess(true);
-            // const urls=res.payload.data.url
-            window.location.href = res.payload.data.url;
-            //  window.open(urls, "_blank");
+            // console.log("data",res.payload.data)
+            window.location.href = res.payload.data.payment_url;
           } else {
             setAlerts(true);
           }
@@ -253,7 +254,7 @@ export default function Recharge() {
                 setActiveTab(tab.label); // Update the active tab
                 setActiveIndex(0); // Reset index to 0
                 const firstChannel = channels.find(
-                  (channel) => channel.label === tab.label
+                  (channel) => channel.label === tab.label,
                 ); // Find the matching channel
                 if (firstChannel && firstChannel.channelItem.length > 0) {
                   setActiveTab2(firstChannel.channelItem[0].label); // Update setActiveTab2 to the first item's label
@@ -311,7 +312,7 @@ export default function Recharge() {
                           </div>
                         ))}
                       </Fragment>
-                    )
+                    ),
                 )}
               </div>
             </div>
@@ -350,7 +351,7 @@ export default function Recharge() {
                                 </button>
                               ))}
                             </Fragment>
-                          )
+                          ),
                       )}
                     </Fragment>
                   ))}
@@ -429,7 +430,7 @@ export default function Recharge() {
                                   </button>
                                 ))}
                               </Fragment>
-                            )
+                            ),
                         )}
                       </Fragment>
                     ))}
