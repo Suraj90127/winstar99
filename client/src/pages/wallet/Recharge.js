@@ -57,6 +57,7 @@ export default function Recharge() {
     formData.append("type", type);
 
     if (activeTab2 === "UPI-QR") {
+
       if (bannergetData?.chennal?.status1 == 1) {
         dispatch(TrexoPayment({ amount, type })).then((res) => {
           setSuccessMessage(res.payload.message);
@@ -87,7 +88,7 @@ export default function Recharge() {
           }, 3000);
         });
       }
-    } else if (activeTab2 === "TY-QRpay" || activeTab2 === "Easy-QRpay") {
+    } else if (activeTab2 === "UPI-PayTM" || activeTab2 === "Easy-QRpay") {
       if (bannergetData?.chennal?.status2 == 1) {
         dispatch(TrexoPayment({ amount, type })).then((res) => {
           setSuccessMessage(res.payload.message);
