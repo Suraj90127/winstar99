@@ -56,7 +56,8 @@ export default function Recharge() {
     formData.append("amount", amount);
     formData.append("type", type);
 
-    if (activeTab === "UPI-QR") {
+    if (activeTab2 === "UPI-QR") {
+
       if (bannergetData?.chennal?.status1 == 1) {
         dispatch(TrexoPayment({ amount, type })).then((res) => {
           setSuccessMessage(res.payload.message);
@@ -87,7 +88,7 @@ export default function Recharge() {
           }, 3000);
         });
       }
-    } else if (activeTab === "UPI-QRpay" || activeTab === "Wake UP-APP") {
+    } else if (activeTab2 === "UPI-PayTM" || activeTab2 === "Easy-QRpay") {
       if (bannergetData?.chennal?.status2 == 1) {
         dispatch(zilpayRecharge({ amount, type })).then((res) => {
           setSuccessMessage(res.payload.message);
