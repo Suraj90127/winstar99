@@ -134,6 +134,7 @@ let checkTime = timerJoin2(Date.now());
 };
 
 const launchGame = async (req, res) => {
+    
   let resdata = null;
   try {
     const playerid = req.body.playerid;

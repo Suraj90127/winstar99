@@ -6871,7 +6871,7 @@ const zilpay = async (req, res) => {
     const params = {
       amount: Number(money),
       auth: "TSFHEYY8UH2FLCVCNFGT",
-      callback: "https://in91.icu/api/webapi/zilpayCallback",
+      callback: "https://winstar99.fit/api/webapi/zilpayCallback",
       redirect_url: "https://winstar99.fit",
       user: userInfo.phone,
     };
@@ -6889,7 +6889,7 @@ const zilpay = async (req, res) => {
         today = ?,
         url = ?,
         time = ?,
-  userStatus=?
+        userStatus=?
         `;
       await connection.execute(sql, [
         data.data.order_id,

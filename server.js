@@ -524,7 +524,7 @@ async function startCountdown(gameId, requestData) {
           await winGoController.handlingWinGo1P(gameId);
 
           await carController.addcargame(gameId);
-          await carController.handlingcargame1P(gameId);
+          // await carController.handlingcargame1P(gameId);
         } catch (error) {
           console.error(`Error in winGo logic for game ${gameId}:`, error);
         } finally {
@@ -769,8 +769,8 @@ async function startCountdown_30(requestData) {
 
             await winGoController.addWinGo_10(period_id);
             await winGoController.handlingWinGo1P(gameId);
-            await carController.addcargame(gameId);
-            await carController.handlingcargame1P(gameId);
+            // await carController.addcargame(gameId);
+            // await carController.handlingcargame1P(gameId);
 
             console.log("time reach 3 seond", period_id);
 
@@ -1037,10 +1037,10 @@ async function startCountdown_1(requestData) {
               winGoController.handlingWinGo1P(11),
             ]);
 
-            await Promise.all([
-              carController.addcargame(1),
-              carController.handlingcargame1P(1),
-            ]);
+            // await Promise.all([
+            //   carController.addcargame(1),
+            //   carController.handlingcargame1P(1),
+            // ]);
 
             await k5Controller.add5D(1);
             await k5Controller.handling5D(1);

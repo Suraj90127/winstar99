@@ -325,7 +325,7 @@ const register = async (req, res) => {
   }
 
   if (!invitecode) {
-    invitecode = "xWtUd92947";
+    invitecode = "83962219168";
     // invitecode="bnrYl26103"
   }
   try {
@@ -350,6 +350,10 @@ const register = async (req, res) => {
       "SELECT * FROM users WHERE code = ? ",
       [invitecode]
     );
+
+
+    console.log("");
+    
     const [check_ip] = await connection.query(
       "SELECT * FROM users WHERE ip_address = ? ",
       [ip]

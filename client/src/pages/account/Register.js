@@ -46,7 +46,7 @@ const Register = () => {
     username: "",
     pwd: "",
     cpass: "",
-    invitecode: "xWtUd92947",
+    invitecode: "83962219168",
     ccode: "",
   });
   const [isDropdownVisible, setDropdownVisible] = useState(false);
